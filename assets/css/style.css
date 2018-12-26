@@ -1,0 +1,208 @@
+/* Document */
+
+* {
+	font-family: 'Ubuntu', serif;
+	box-sizing: border-box;
+	color: #292929;
+}
+
+body {
+	background: linear-gradient(217deg, #D6A4A4, #DAE2F8 70.71%);
+	min-height: 100vh;
+	padding: 0;
+	margin: 0;
+}
+
+footer,
+header {
+	background: white;
+
+}
+
+header {
+	margin-top: 0;
+}
+
+h1 {
+	padding: 1em 0;
+	margin-top: 0;
+	margin-bottom: 1.5em;
+	text-align: center;
+}
+
+h2 {
+	padding-bottom: .5em;
+	border-bottom: 5px solid #292929;
+}
+
+div, footer {
+	margin: 0 auto;
+	text-align: center;
+}
+
+footer {
+	padding: .1em;
+}
+
+button {
+	display: block;
+	margin-bottom: 1em;
+	width: 100%;
+	padding: 1em;
+	cursor: pointer;
+	border: none;
+	font-size: 1.1em;
+	text-align: left;
+	border: 2px solid white;
+	position: relative;
+}
+
+button::after {
+	content: '+';
+	font-size: 1.5em;
+	border-left: 1px solid black;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	padding-left: 15px;
+	right: 15px;
+}
+
+button:hover {
+	background: transparent;
+}
+
+
+button,
+img {
+	border-radius: 5px;
+}
+
+/* Tableau */
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+legend {
+	font-size: 1.3em;
+	font-weight: bold;
+	margin-top: .5em;
+	text-align: center;
+	padding: 1em 0;
+}
+
+figcaption::before {
+	content: '-';
+	display: block;
+}
+
+th, td {
+	width: 50%;
+}
+
+img {
+	min-width: 75px;
+	min-height: 75px;
+}
+
+tr, td, th {
+	text-align: center;
+	padding: .5em;
+	border: 1px solid #292929;
+}
+
+/* Classes */
+
+#player-container,
+#ia-container {
+	border: 1px solid #292929;
+	border-radius: 5px;
+}
+
+.vertical-align {
+	display: table;
+	height: 100%;
+}
+
+.vertical-align > div {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.container {
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+.float-container {
+	overflow: hidden;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.float-container > div {
+	float: left;
+	width: 31.33%;
+	margin-left: 3%;
+}
+
+.float-container > div:first-child {
+	margin-left: 0;
+}
+
+.float-container img {
+	padding: 1em;
+}
+
+/* Responsive design */
+
+@media screen and (max-width: 768px) {
+	.float-container {
+		overflow: visible;
+	}
+	.float-container > div {
+		float: none;
+		width: 100%;
+	}
+	button {
+		display: inline-block;
+		width: auto;
+	}
+}
+
+/* Animation */
+
+@-webkit-keyframes zoomIn {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.zoomIn {
+-webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-name: zoomIn;
+  animation-name: zoomIn;
+}
