@@ -1,2 +1,2 @@
-# pierre-feuille-ciseaux
-Jeu de Pierre-feuille-ciseaux programmé en JavaScript Orienté Objet
+# Pierre-feuille-ciseaux
+Jeu de pierre-feuille-ciseaux programmé en JavaScript Orienté Objet
