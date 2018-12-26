@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<meta name="author" content="Angélique">
+	<meta name="description" content="Jeu réalisé en JavaScript Orienté Objet (JSOO)">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,700" rel="stylesheet">
+	<title>Pierre-feuille-ciseaux</title>
+</head>
+<body>
+	<header>
+		<h1>Pierre-feuille-ciseaux</h1>
+	</header>
+	<section class="container">
+		<div class="float-container">
+			<div class="vertical-align">
+				<div>
+					<button type="button" data-id="0">Pierre</button>
+					<button type="button" data-id="1">Feuille</button>
+					<button type="button" data-id="2">Ciseaux</button>
+				</div>
+			</div>
+			<div id="player-container">
+				<h2>Vous</h2>
+				<figure>
+					<img width="100" src="" alt="">
+					<figcaption></figcaption>
+				</figure>
+			</div>
+			<div id="ia-container">
+				<h2>IA</h2>
+				<figure>
+					<img width="100" src="" alt="">
+					<figcaption></figcaption>
+				</figure>
+			</div>
+		</div>
+		<table id="scores">
+			<legend>Scores</legend>
+			<thead>
+				<tr>
+					<th>IA</th>
+					<th>Vous</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td id="ia-score">0</td>
+					<td id="player-score">0</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="2">À vous de jouer !</td>
+				</tr>
+			</tfoot>
+		</table>
+		<div id="results">
+		</div>
+	</section>
+	<script src="assets/js/classes.js"></script>
+	<script src="assets/js/main.js"></script>
+</body>
+</html>
