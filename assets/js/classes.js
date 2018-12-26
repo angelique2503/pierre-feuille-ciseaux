@@ -37,7 +37,7 @@ class Player {
 class IA extends Player {
 
 	constructor(score) {
-    	super(score);
+    		super(score);
 	}
 
 	play(list) { // Pierre, feuille ou ciseaux tiré au hasard
