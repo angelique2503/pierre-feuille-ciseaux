@@ -1,22 +1,16 @@
 /* Document */
 
 * {
-	font-family: 'Ubuntu', serif;
+	font-family: 'Ubuntu Mono', monospace;
 	box-sizing: border-box;
 	color: #292929;
 }
 
 body {
-	background: linear-gradient(217deg, #D6A4A4, #DAE2F8 70.71%);
+	background-image: linear-gradient( 135deg, #FDEB71 10%, #F8D800 100%);
 	min-height: 100vh;
 	padding: 0;
 	margin: 0;
-}
-
-footer,
-header {
-	background: white;
-
 }
 
 header {
@@ -44,6 +38,10 @@ footer {
 	padding: .1em;
 }
 
+button::before {
+	content: '\00BB\ ';
+}
+
 button {
 	display: block;
 	margin-bottom: 1em;
@@ -55,9 +53,10 @@ button {
 	text-align: left;
 	border: 2px solid white;
 	position: relative;
+	background: rgba(255,255,255,0.7);
 }
 
-button::after {
+/*button::after {
 	content: '+';
 	font-size: 1.5em;
 	border-left: 1px solid black;
@@ -66,12 +65,11 @@ button::after {
 	transform: translateY(-50%);
 	padding-left: 15px;
 	right: 15px;
-}
+}*/
 
 button:hover {
 	background: transparent;
 }
-
 
 button,
 img {
@@ -81,16 +79,21 @@ img {
 /* Tableau */
 
 table {
+	margin-top: 2em;
 	border-collapse: collapse;
 	width: 100%;
+	background: rgba(255,255,255,0.6);
 }
 
 legend {
 	font-size: 1.3em;
-	font-weight: bold;
 	margin-top: .5em;
 	text-align: center;
 	padding: 1em 0;
+}
+
+figcaption, td, th {
+	font-size: 1.2em;
 }
 
 figcaption::before {
@@ -103,8 +106,7 @@ th, td {
 }
 
 img {
-	min-width: 75px;
-	min-height: 75px;
+	max-width: 100%;
 }
 
 tr, td, th {
@@ -114,6 +116,17 @@ tr, td, th {
 }
 
 /* Classes */
+
+#replay {
+	display: inline-block;
+	width: auto;
+	margin-top: 1em;
+	display:inline-block;
+}
+
+#replay::after {
+	content: none;
+}
 
 #player-container,
 #ia-container {
@@ -134,6 +147,8 @@ tr, td, th {
 .container {
 	max-width: 600px;
 	margin: 0 auto;
+	width: 100%;
+	padding-top: 5em;
 }
 
 .float-container {
@@ -159,10 +174,22 @@ tr, td, th {
 /* Responsive design */
 
 @media screen and (max-width: 768px) {
+	.container {
+		padding-top: 1.3em;
+	}
+	figure {
+		margin: 0 .5em;
+	}
+	figcaption {
+		padding-bottom: 1.5em;
+	}
 	.float-container {
-		overflow: visible;
+		/*overflow: visible;*/
 	}
 	.float-container > div {
+		width: 45%;
+	}
+	.float-container > div:first-child {
 		float: none;
 		width: 100%;
 	}
