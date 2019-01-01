@@ -8,6 +8,21 @@ class Player {
 		this.str = '';
   	}
 
+  	/*** Getters ***/
+
+  	get_score() {
+  		return this.score;
+  	}
+
+  	/*** Setters ***/
+
+  	set_score(new_score) {
+  		this.score = new_score;
+  		return this.score;
+  	}
+
+  	/*** Play ***/
+
   	play(id) { // ID de pierre, feuille ou ciseaux
   		this.element_id = id;
   	}
@@ -37,7 +52,7 @@ class Player {
 class IA extends Player {
 
 	constructor(score) {
-    		super(score);
+    	super(score);
 	}
 
 	play(list) { // Pierre, feuille ou ciseaux tiré au hasard
