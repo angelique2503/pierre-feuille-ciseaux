@@ -22,7 +22,7 @@ const winning_combination = [ 														// Combinaisons gagnantes
 	{ winner: 0, loser: 2, str: 'La pierre écrase les ciseaux et gagne !' }, 		// La pierre (0) écrase les ciseaux (2) et gagne
 	{ winner: 1, loser: 0, str: 'La feuille enveloppe la pierre et gagne !' }, 		// La feuille (1) enveloppe la pierre (0) et gagne
 	{ winner: 2, loser: 1, str: 'Les ciseaux découpent la feuille et gagnent !' } 	// Les ciseaux (2) découpent la feuille (1) et gagnent.
-]
+];
 
 // Instanciation
 
@@ -31,15 +31,59 @@ const player = new Player(player_score);
 
 /*** Functions ***/
 
-function start() {
+function winner() { // Qui est le gagnant final ?
+	let winner;
+	if ( ia.get_score() === 10 || player.get_score() === 10 ) {
+		winner = true;
+		if ( ia.get_score() === 10 ) {
+			final_winner = 'IA';
+		}
+		else {
+			final_winner = 'Player';
+		}
+	}
+	else {
+		winner = false;
+	}
+	return winner;
+}
+
+function start() { // Jouer
 
 	let player_choice = this.dataset.id;
 
-	ia.play(list); // L'IA joue
-	player.play(player_choice); // Le joueur joue
+	if ( winner() ) { // Si un joueur gagne la partie, alors le jeu est stoppé
+		stop();
+	}
+	else {
+		ia.play(list); // L'IA joue
+		player.play(player_choice); // Le joueur joue
+		write_results(list[ia.element_id], list[player.element_id]); // Qui gagne ?
+	}
 
-	write_results(list[ia.element_id], list[player.element_id]);
+}
 
+function stop() { // Stopper la partie et permettre de rejouer
+	var message = '';
+	var replay_button = '<button type="button" id="replay">Rejouer</button>';
+	var results = document.querySelector('table tfoot td');
+	if ( final_winner == 'IA' ) {
+		message = 'Dommage, vous avez perdu ! <br/>'+replay_button;
+	}
+	if ( final_winner == 'Player' ) {
+		message = 'Bravo, vous avez gagné ! <br/>'+replay_button;
+	}
+	results.innerHTML = message;
+	document.getElementById('replay').addEventListener('click',reset);
+}
+
+function reset() {
+	ia.set_score(0);
+	player.set_score(0);
+	final_winner = '';
+	document.getElementById('ia-score').innerHTML = 0,
+	document.getElementById('player-score').innerHTML = 0;
+	document.getElementById('replay').remove();
 }
 
 function write_results(ia_choice, player_choice) {
@@ -65,28 +109,23 @@ function write_results(ia_choice, player_choice) {
 	ia_score.innerHTML = ia.score;
 
 	// Set results
-	results.innerHTML = '<p>'+str+'</p>';
+	results.innerHTML = str;
 
 }
 
 function i_am_the_winner(player_element_id, ia_element_id) {
+
+	// Gagnant ou perdant ?
 	ia.who_wins(ia_element_id, player_element_id, list, winning_combination);
 	player.who_wins(ia_element_id, player_element_id, list, winning_combination);
+
 	if ( ia.winner ) {
 		str = ia.str;
 	}
-	else {
+	if ( player.winner ) {
 		str = player.str;
 	}
-}
 
-function final_winner() {
-	if ( ia.score === 10 ) {
-		final_winner = 'IA';
-	}
-	if ( player.score === 10 ) {
-		final_winner = 'You';
-	}
 }
 
 /*** Events ***/
@@ -100,11 +139,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		buttons[i].addEventListener('click',start);
 	}
 
-	for (let i = 0; i < images.length; i++) {
+	/*for (let i = 0; i < images.length; i++) {
 		images[i].addEventListener("DOMAttrModified", function(event) {
     		if (event.attrName == "src") {
     		}
 		});
-	}
+	}*/
 
 });
